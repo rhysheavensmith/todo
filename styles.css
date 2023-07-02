@@ -1,3 +1,11 @@
 .complete {
   text-decoration: line-through;
 }
+
+.space {
+  margin-left: 20px;
+}
+
+.listItem {
+  list-style: none;
+}
