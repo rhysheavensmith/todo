@@ -1,4 +1,4 @@
-// Store the elements from the dom in variables
+// Store the elements from the html in variables
 const textInput = document.querySelector(".input");
 const button = document.querySelector(".submit");
 const list = document.querySelector(".list");
@@ -6,21 +6,29 @@ const list = document.querySelector(".list");
 // function to create list item
 const createItem = () => {
   const li = document.createElement("li");
-  li.innerText = textInput.value;
   li.classList.add("listItem");
-  li.addEventListener("click", function () {
-    li.classList.toggle("complete");
+
+  const span = document.createElement("span");
+  span.innerText = textInput.value;
+  span.addEventListener("click", function () {
+    span.classList.toggle("complete");
   });
-  list.appendChild(li);
+
+  li.appendChild(span);
+
   const delBtn = createDelete();
   li.appendChild(delBtn);
+
+  list.appendChild(li);
 };
 
 // function to create a delete button
 const createDelete = () => {
   const delBtn = document.createElement("button");
+
   delBtn.innerText = "delete";
-  delBtn.classList.add("space");
+  delBtn.classList.add("deleteButton");
+
   delBtn.addEventListener("click", function () {
     this.parentNode.remove();
   });
@@ -30,6 +38,7 @@ const createDelete = () => {
 // function to add the to do to the list
 const addToDo = () => {
   const trimValue = textInput.value.trim();
+
   if (trimValue.length > 0) {
     createItem();
     textInput.value = "";
